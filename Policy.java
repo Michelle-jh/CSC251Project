@@ -211,7 +211,7 @@ public class Policy
       
       if (bmi > BMI_NUM)
       {
-         double additionalFee =(bmi-BMI_NUM)*20;
+         double additionalFee =(bmi-35)*20;
          totalAmt += additionalFee;
       }
       return totalAmt;
