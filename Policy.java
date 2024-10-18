@@ -26,15 +26,15 @@ public class Policy
    }
    
     /**
-   Constructor that initializes attributes to the value of the argument it is 
-   @param policyNum is the policy number
-   @param policyProviderName is the policy provider name 
-   @param policyFName is holders first name
-   @param policyLName is holders last name
-   @param policyAge the holders age
-   @param policyHStatus is the holders smoking status
-   @param policyHHeight the height of the holder
-   @param policyHWeight the weight of the holder
+      Constructor that initializes attributes to the value of the argument it is 
+      @param policyNum is the policy number
+      @param policyProviderName is the policy provider name 
+      @param policyFName is holders first name
+      @param policyLName is holders last name
+      @param policyAge the holders age
+      @param policyHStatus is the holders smoking status
+      @param policyHHeight the height of the holder
+      @param policyHWeight the weight of the holder
    */
 
    public Policy(int policyNum, String policyProviderName, String policyFName, String policyLName, int policyAge, String policyHStatus, double policyHHeight, double policyHWeight)
@@ -48,87 +48,138 @@ public class Policy
       policyHolderHeight = policyHHeight;
       policyHolderWeight = policyHWeight;
    }
-   // setter and getter methods 
+   /**
+      the getPolicyNumber retrieves the value of the policy number field
+      @return the policy number 
+   */ 
    public int getPolicyNumber()
    {
       return policyNumber;
    }
-   
+   /**
+      the setPolicyNumber method updates the value of the policy number field
+      @param the policy number 
+   */
    public void setPolicyNumber(int policyNum)
    {
       policyNumber = policyNum;
    }
-   
+   /**
+      the getPolicyName retrieves the string value of the policy name field
+      @return the policy name 
+   */
    public String getPolicyName()
    {
       return policyName;
    }
-   
+   /**
+      the setPolicyName method updates the string value of the policy name field
+      @param the policy name 
+   */
    public void setPolicyName(String policyProviderName)
    {
       policyName = policyProviderName;
    }
-   
+   /**
+      the getPolicyHolderFName retrieves the string value of the policy customers first name field
+      @return the policy customers first name 
+   */
    public String getPolicyHolderFName()
    {
       return policyHolderFName;
    }
-   
+   /**
+      the setPolicyHolderFName method updates the string value of the policy customer first name field
+      @param the policy customer first name 
+   */
    public void setPolicyHolderFName(String policyFName)
    {
       policyHolderFName = policyFName;
    }
-   
+   /**
+      the getPolicyHolderLName retrieves the string value of the policy customers last name field
+      @return the policy customers last name 
+   */
    public String getPolicyHolderLName()
    {
       return policyHolderLName;
    }
-   
+   /**
+      the setPolicyHolderLName method updates the string value of the policy customer last name field
+      @param the policy customer last name 
+   */
    public void setPolicyHolderLName(String policyLName)
    {
       policyHolderLName = policyLName;
    }
-   
+   /**
+      the getPolicyHolderAge retrieves the value of the policy customers age field
+      @return the policy customers age 
+   */
    public int getPolicyHolderAge()
    {
       return policyHolderAge;
    }
-   
+   /**
+      the setPolicyHolderAge method updates the value of the policy customer age field
+      @param the policy customer age 
+   */
+
    public void setPolicyHolderAge(int policyAge)
    {
       policyHolderAge = policyAge;
    }
-   
+   /**
+      the getPolicySmokeStatus retrieves the string value of the policy customers smoking status
+      @return the policy customers somking status 
+   */
    public String getPolicySmokeStatus()
    {
       return policySmokeStatus;
    }
+   /**
+      the setPolicySmokeStatus method updates the string value of the policy customers smoking status
+      @param the policy customers smoking status
+   */
    public void setPolicySmokeStatus(String policyHStatus)
    {
       policySmokeStatus = policyHStatus;
    }
-   
+   /**
+      the getPolicyHolderHeight retrieves the value of the policy customers height
+      @return the policy customers height 
+   */
    public double getPolicyHolderHeight()
    {
       return policyHolderHeight;
    }
-   
+   /**
+      the setPolicyHolderHeight method updates the  value of the policy customers height
+      @param the policy customers height
+   */
    public void setPolicyHolderHeight(double policyHHeight)
    {
       policyHolderHeight = policyHHeight;
    } 
-   
+   /**
+      the getPolicyHolderWeight retrieves the value of the policy customers weight
+      @return the policy customers weight 
+   */
    public double getPolicyHolderWeight()
    {
       return policyHolderWeight;
    }
-   
+   /**
+      the setPolicyHolderWeight method updates the  value of the policy customers weight
+      @param the policy customers weight
+   */
    public void setPolicyHolderWeight(double policyHWeight)
    {
       policyHolderWeight = policyHWeight;
    }
    /*
-   calculates the BMI
+      The getBmi method calculates the BMI
+      @return the customers bmi
    */
    public double getBmi()
    {
@@ -136,16 +187,19 @@ public class Policy
       return bmi;
    }
    /*
-   calculates the total policy price along with additional fees 
-   @param bmi is the claculation of the body mass index
-   @param holders somker status 
-   @param the holders age
+      calculates the total policy price along with additional fees 
+      @param bmi is the claculation of the body mass index
+      @param holders somker status 
+      @param the holders age
+      @return the total amount of policy price
    */
    public double calcPolicyPrice(double bmi, String policyHStatus, int policyAge)
    {
       double totalAmt = 600;
+      final int POLICY_AGE = 50;
+      final int BMI_NUM =35;
       
-      if(policyAge > 50)
+      if(policyAge > POLICY_AGE)
       {
          totalAmt += 75;
       }
@@ -155,9 +209,9 @@ public class Policy
          totalAmt += 100;
       }
       
-      if (bmi > 35)
+      if (bmi > BMI_NUM)
       {
-         double additionalFee =(bmi-35)*20;
+         double additionalFee =(bmi-BMI_NUM)*20;
          totalAmt += additionalFee;
       }
       return totalAmt;
