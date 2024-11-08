@@ -3,12 +3,9 @@ public class Policy
    //data fields or attributes
    private int policyNumber;
    private String policyName;
-   private String policyHolderFName;
-   private String policyHolderLName;
-   private int policyHolderAge;
-   private String policySmokeStatus;
-   private double policyHolderHeight;
-   private double policyHolderWeight;
+   
+   //creating a reference variable
+   private PolicyHolder policyHolder;
    
    /**
    no-arg constructor that initializes the policy attributes
@@ -17,36 +14,20 @@ public class Policy
    {
       policyNumber = 0;
       policyName = "  ";
-      policyHolderFName = "  ";
-      policyHolderLName = "  ";
-      policyHolderAge = 0;
-      policySmokeStatus = "  ";
-      policyHolderHeight = 0;
-      policyHolderWeight = 0;
+      policyHolder = new PolicyHolder();
    }
    
     /**
       Constructor that initializes attributes to the value of the argument it is 
       @param policyNum is the policy number
       @param policyProviderName is the policy provider name 
-      @param policyFName is holders first name
-      @param policyLName is holders last name
-      @param policyAge the holders age
-      @param policyHStatus is the holders smoking status
-      @param policyHHeight the height of the holder
-      @param policyHWeight the weight of the holder
    */
 
-   public Policy(int policyNum, String policyProviderName, String policyFName, String policyLName, int policyAge, String policyHStatus, double policyHHeight, double policyHWeight)
+   public Policy(int policyNum, String policyProviderName, PolicyHolder pHolder)
    {
       policyNumber = policyNum;
       policyName = policyProviderName;
-      policyHolderFName = policyFName;
-      policyHolderLName = policyLName;
-      policyHolderAge = policyAge;
-      policySmokeStatus = policyHStatus;
-      policyHolderHeight = policyHHeight;
-      policyHolderWeight = policyHWeight;
+      policyHolder = pHolder;
    }
    /**
       the getPolicyNumber retrieves the value of the policy number field
@@ -81,110 +62,20 @@ public class Policy
       policyName = policyProviderName;
    }
    /**
-      the getPolicyHolderFName retrieves the string value of the policy customers first name field
-      @return the policy customers first name 
+      the getPolicyHolder() this method uses refrence variable of the policyholder class
+      @return the policy holder class 
    */
-   public String getPolicyHolderFName()
+   public PolicyHolder getPolicyHolder()
    {
-      return policyHolderFName;
+      return policyHolder;
    }
    /**
-      the setPolicyHolderFName method updates the string value of the policy customer first name field
-      @param the policy customer first name 
+      the getPolicyHolder() this method uses refrence variable of the policyholder class
+      @param the policy holder class 
    */
-   public void setPolicyHolderFName(String policyFName)
+   public void setPolicyHolder(PolicyHolder pHolder)
    {
-      policyHolderFName = policyFName;
-   }
-   /**
-      the getPolicyHolderLName retrieves the string value of the policy customers last name field
-      @return the policy customers last name 
-   */
-   public String getPolicyHolderLName()
-   {
-      return policyHolderLName;
-   }
-   /**
-      the setPolicyHolderLName method updates the string value of the policy customer last name field
-      @param the policy customer last name 
-   */
-   public void setPolicyHolderLName(String policyLName)
-   {
-      policyHolderLName = policyLName;
-   }
-   /**
-      the getPolicyHolderAge retrieves the value of the policy customers age field
-      @return the policy customers age 
-   */
-   public int getPolicyHolderAge()
-   {
-      return policyHolderAge;
-   }
-   /**
-      the setPolicyHolderAge method updates the value of the policy customer age field
-      @param the policy customer age 
-   */
-
-   public void setPolicyHolderAge(int policyAge)
-   {
-      policyHolderAge = policyAge;
-   }
-   /**
-      the getPolicySmokeStatus retrieves the string value of the policy customers smoking status
-      @return the policy customers somking status 
-   */
-   public String getPolicySmokeStatus()
-   {
-      return policySmokeStatus;
-   }
-   /**
-      the setPolicySmokeStatus method updates the string value of the policy customers smoking status
-      @param the policy customers smoking status
-   */
-   public void setPolicySmokeStatus(String policyHStatus)
-   {
-      policySmokeStatus = policyHStatus;
-   }
-   /**
-      the getPolicyHolderHeight retrieves the value of the policy customers height
-      @return the policy customers height 
-   */
-   public double getPolicyHolderHeight()
-   {
-      return policyHolderHeight;
-   }
-   /**
-      the setPolicyHolderHeight method updates the  value of the policy customers height
-      @param the policy customers height
-   */
-   public void setPolicyHolderHeight(double policyHHeight)
-   {
-      policyHolderHeight = policyHHeight;
-   } 
-   /**
-      the getPolicyHolderWeight retrieves the value of the policy customers weight
-      @return the policy customers weight 
-   */
-   public double getPolicyHolderWeight()
-   {
-      return policyHolderWeight;
-   }
-   /**
-      the setPolicyHolderWeight method updates the  value of the policy customers weight
-      @param the policy customers weight
-   */
-   public void setPolicyHolderWeight(double policyHWeight)
-   {
-      policyHolderWeight = policyHWeight;
-   }
-   /*
-      The getBmi method calculates the BMI
-      @return the customers bmi
-   */
-   public double getBmi()
-   {
-      double bmi =(policyHolderWeight * 703)/(policyHolderHeight* policyHolderHeight);
-      return bmi;
+      policyHolder = pHolder;
    }
    /*
       calculates the total policy price along with additional fees 
@@ -193,18 +84,19 @@ public class Policy
       @param the holders age
       @return the total amount of policy price
    */
-   public double calcPolicyPrice(double bmi, String policyHStatus, int policyAge)
+   public double calcPolicyPrice()
    {
       double totalAmt = 600;
       final int POLICY_AGE = 50;
       final int BMI_NUM =35;
+      double bmi = policyHolder.getBmi();
       
-      if(policyAge > POLICY_AGE)
+      if(policyHolder.getPolicyHolderAge() > POLICY_AGE)
       {
          totalAmt += 75;
       }
       
-      if(policyHStatus.equalsIgnoreCase("Smoker"))
+      if(policyHolder.getPolicySmokeStatus().equalsIgnoreCase("Smoker"))
       {
          totalAmt += 100;
       }
