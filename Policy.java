@@ -81,45 +81,15 @@ public class Policy
    {
       policyHolder = pHolder;
    }
-   /*
-      calculates the total policy price along with additional fees 
-      @param bmi is the claculation of the body mass index
-      @param holders somker status 
-      @param the holders age
-      @return the total amount of policy price
-   */
-   public double calcPolicyPrice()
-   {
-      double totalAmt = 600;
-      final int POLICY_AGE = 50;
-      final int BMI_NUM =35;
-      double bmi = policyHolder.getBmi();
-      
-      if(policyHolder.getPolicyHolderAge() > POLICY_AGE)
-      {
-         totalAmt += 75;
-      }
-      
-      if(policyHolder.getPolicySmokeStatus().equalsIgnoreCase("Smoker"))
-      {
-         totalAmt += 100;
-      }
-      
-      if (bmi > BMI_NUM)
-      {
-         double additionalFee =(bmi-35)*20;
-         totalAmt += additionalFee;
-      }
-      return totalAmt;
-   }
    public static int getPolicyCount()
    {
       return policyCount;
    }
    public String toString()
    {
-      return "Policy Number: " + policyNumber + "\n" +
+      return "\n" +
+             "Policy Number: " + policyNumber + "\n" +
              "Policy Name: " + policyName + "\n" +
-             "Policy Holder:\n" + policyHolder.toString();
+              policyHolder.toString();
    }
 }
