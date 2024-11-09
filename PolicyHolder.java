@@ -146,6 +146,37 @@ public class PolicyHolder
       double bmi =(policyHolderWeight * 703)/(policyHolderHeight* policyHolderHeight);
       return bmi;
    }
+   /*
+      calculates the total policy price along with additional fees 
+      @param bmi is the claculation of the body mass index
+      @param holders somker status 
+      @param the holders age
+      @return the total amount of policy price
+   */
+   public double calcPolicyPrice()
+   {
+      double totalAmt = 600;
+      final int POLICY_AGE = 50;
+      final int BMI_NUM =35;
+      double bmi = getBmi();
+      
+      if(policyHolderAge > POLICY_AGE)
+      {
+         totalAmt += 75;
+      }
+      
+      if(policySmokeStatus.equalsIgnoreCase("Smoker"))
+      {
+         totalAmt += 100;
+      }
+      
+      if (bmi > BMI_NUM)
+      {
+         double additionalFee =(bmi-35)*20;
+         totalAmt += additionalFee;
+      }
+      return totalAmt;
+   }
    public String toString()
    {
       return "First Name: " + policyHolderFName + "\n" +
@@ -154,6 +185,7 @@ public class PolicyHolder
              "Smoking Status: " + policySmokeStatus + "\n" +
              "Height: " + policyHolderHeight + "\n" +
              "Weight: " + policyHolderWeight + "\n" +
-             "BMI: " + String.format("%.2f",getBmi());
+             "BMI: " + String.format("%.2f",getBmi()) + "\n" +
+             "Policy Price: " + String.format("%.2f",calcPolicyPrice());
    }
 }
