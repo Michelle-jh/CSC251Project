@@ -108,4 +108,10 @@ public class Policy
       }
       return totalAmt;
    }
+   public String toString()
+   {
+      return "Policy Number: " + policyNumber + "\n" +
+             "Policy Name: " + policyName + "\n" +
+             "Policy Holder:\n" + policyHolder.toString();
+   }
 }
