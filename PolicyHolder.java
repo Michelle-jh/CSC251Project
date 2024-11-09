@@ -9,7 +9,7 @@ public class PolicyHolder
    private double policyHolderWeight;
    
    /**
-   no-arg constructor that initializes the policy attributes
+   no-arg constructor that initializes the policy holder attributes
    */
    public PolicyHolder()
    {
@@ -145,5 +145,15 @@ public class PolicyHolder
    {
       double bmi =(policyHolderWeight * 703)/(policyHolderHeight* policyHolderHeight);
       return bmi;
+   }
+   public String toString()
+   {
+      return "First Name: " + policyHolderFName + "\n" +
+             "Last Name: " + policyHolderLName + "\n" +
+             "Age: " + policyHolderAge + "\n" +
+             "Smoking Status: " + policySmokeStatus + "\n" +
+             "Height: " + policyHolderHeight + "\n" +
+             "Weight: " + policyHolderWeight + "\n" +
+             "BMI: " + String.format("%.2f",getBmi());
    }
 }
