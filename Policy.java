@@ -7,6 +7,8 @@ public class Policy
    //creating a reference variable
    private PolicyHolder policyHolder;
    
+   private static int policyCount = 0;
+   
    /**
    no-arg constructor that initializes the policy attributes
    */
@@ -15,6 +17,7 @@ public class Policy
       policyNumber = 0;
       policyName = "  ";
       policyHolder = new PolicyHolder();
+      policyCount++;
    }
    
     /**
@@ -28,6 +31,7 @@ public class Policy
       policyNumber = policyNum;
       policyName = policyProviderName;
       policyHolder = pHolder;
+      policyCount++;
    }
    /**
       the getPolicyNumber retrieves the value of the policy number field
@@ -107,6 +111,10 @@ public class Policy
          totalAmt += additionalFee;
       }
       return totalAmt;
+   }
+   public static int getPolicyCount()
+   {
+      return policyCount;
    }
    public String toString()
    {
